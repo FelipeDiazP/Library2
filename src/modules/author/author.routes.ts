@@ -8,10 +8,6 @@ const controller = new AuthorController();
 router.post("/", asyncHandler(controller.create));
 router.get("/", asyncHandler(controller.findAll));
 router.get("/:id", asyncHandler(controller.findById));
-<<<<<<< HEAD
-=======
-router.get("/:id/books", asyncHandler(controller.findBooksByAuthor)); // Punto extra
->>>>>>> 6ab41a4 (feat: commit inicial de la Library API)
 router.put("/:id", asyncHandler(controller.update));
 router.delete("/:id", asyncHandler(controller.delete));
 
