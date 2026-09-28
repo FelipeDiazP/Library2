@@ -28,4 +28,12 @@ export class AuthorController {
         await this.authorService.delete(req.params.id);
         res.status(204).send();
     };
+<<<<<<< HEAD
+=======
+
+    findBooksByAuthor = async (req: Request<{ id: string }>, res: Response): Promise<void> => {
+        const books = await this.authorService.findBooksByAuthor(req.params.id);
+        res.status(200).json(books);
+    };
+>>>>>>> 6ab41a4 (feat: commit inicial de la Library API)
 }

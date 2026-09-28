@@ -1,5 +1,9 @@
 import { ObjectId } from "mongodb";
 import { Author, AuthorDTO } from "./author.model";
+<<<<<<< HEAD
+=======
+import { Book } from "../book/book.model";
+>>>>>>> 6ab41a4 (feat: commit inicial de la Library API)
 import { AuthorRepository } from "./author.repository";
 import { BadRequestError, NotFoundError } from "../../shared/errors/AppError";
 import { getDb } from "../../config/database";
@@ -72,6 +76,17 @@ export class AuthorService {
         if (!deleted) throw new NotFoundError("Autor no encontrado");
     }
 
+<<<<<<< HEAD
+=======
+    async findBooksByAuthor(id: string): Promise<Book[]> {
+        const objectId = this.toObjectId(id);
+        const author = await this.authorRepository.findById(objectId);
+        if (!author) throw new NotFoundError("Autor no encontrado");
+
+        return getDb().collection<Book>("books").find({ authorId: objectId }).toArray();
+    }
+
+>>>>>>> 6ab41a4 (feat: commit inicial de la Library API)
     private requireString(value: unknown, field: string): string {
         if (typeof value !== "string" || value.trim() === "") {
             throw new BadRequestError(`El campo '${field}' es obligatorio y no puede estar vacío`);
