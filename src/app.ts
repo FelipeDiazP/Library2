@@ -4,6 +4,8 @@ import compression from "compression";
 import helmet from "helmet";
 import morgan from "morgan";
 import v1Routes from "./api/v1/index";
+import swaggerUI from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
 import { notFound, errorHandler } from "./shared/middlewares/errorHandler";
 
 export const app = express();
@@ -14,9 +16,10 @@ app.use(compression());
 app.use(helmet());
 app.use(morgan("dev"));
 
-// Health check
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
 app.get("/health", (_req, res) => {
-    res.status(200).json({ status: "ok", uptime: process.uptime() });
+  res.status(200).json({ status: "ok", uptime: process.uptime() });
 });
 
 app.use("/api/v1", v1Routes);
