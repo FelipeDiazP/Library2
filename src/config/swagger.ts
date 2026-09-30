@@ -10,7 +10,7 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: "https://library2-v0mi.onrender.com/api-docs/",
+        url: "https://library2-v0mi.onrender.com/",
         description: "Servidor produccion"
       },
       {
